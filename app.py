@@ -10,89 +10,120 @@ import csv, re, operator
 
 app = Flask(__name__)
 
+# person = {
+#     'first_name': 'Nohossat',
+#     'last_name' : 'TRAORE',
+#     'address' : '9 rue Léon Giraud · PARIS · FRANCE',
+#     'job': 'Web developer',
+#     'tel': '0678282923',
+#     'email': 'nohossat.tra@yahoo.com',
+#     'description' : 'Suite à une expérience internationale en développement web et dans le domaine des arts, l’impact de l’intelligence artificielle dans nos vies me surprend de jour en jour. \n Aujourd’hui, je souhaite changer de cap et comprendre les secrets que recèlent nos données. J’aimerais mettre à profit ces découvertes au service des entreprises/associations à dimension sociale.',
+#     'social_media' : [
+#         {
+#             'link': 'https://www.facebook.com/nono',
+#             'icon' : 'fa-facebook-f'
+#         },
+#         {
+#             'link': 'https://github.com/nono',
+#             'icon' : 'fa-github'
+#         },
+#         {
+#             'link': 'linkedin.com/in/nono',
+#             'icon' : 'fa-linkedin-in'
+#         },
+#         {
+#             'link': 'https://twitter.com/nono',
+#             'icon' : 'fa-twitter'
+#         }
+#     ],
+#     'img': 'img/img_nono.jpg',
+#     'experiences' : [
+#         {
+#             'title' : 'Web Developer',
+#             'company': 'AZULIK',
+#             'description' : 'Project manager and lead developer for several AZULIK websites.',
+#             'timeframe' : 'July 2018 - November 2019'
+#         },
+#         {
+#             'title' : 'Freelance Web Developer',
+#             'company': 'Independant',
+#             'description' : 'Create Wordpress websites for small and medium companies. ',
+#             'timeframe' : 'February 2017 - Present'
+#         },
+#         {
+#             'title' : 'Sharepoint Intern',
+#             'company': 'ALTEN',
+#             'description' : 'Help to manage a 600 Sharepoint sites platform (audit, migration to Sharepoint newer versions)',
+#             'timeframe' : 'October 2015 - October 2016'
+#         }
+#     ],
+#     'education' : [
+#         {
+#             'university': 'Paris Diderot',
+#             'degree': 'Projets informatiques et Startégies d\'entreprise (PISE)',
+#             'description' : 'Gestion de projets IT, Audit, Programmation',
+#             'mention' : 'Bien',
+#             'timeframe' : '2015 - 2016'
+#         },
+#         {
+#             'university': 'Paris Dauphine',
+#             'degree': 'Master en Management global',
+#             'description' : 'Fonctions supports (Marketing, Finance, Ressources Humaines, Comptabilité)',
+#             'mention' : 'Bien',
+#             'timeframe' : '2015'
+#         },
+#         {
+#             'university': 'Lycée Turgot - Paris Sorbonne',
+#             'degree': 'CPGE Economie & Gestion',
+#             'description' : 'Préparation au concours de l\'ENS Cachan, section Economie',
+#             'mention' : 'N/A',
+#             'timeframe' : '2010 - 2012'
+#         }
+#     ],
+#     'programming_languages' : {
+#         'HMTL' : ['fa-html5', '100'], 
+#         'CSS' : ['fa-css3-alt', '100'], 
+#         'SASS' : ['fa-sass', '90'], 
+#         'JS' : ['fa-js-square', '90'],
+#         'Wordpress' : ['fa-wordpress', '80'],
+#         'Python': ['fa-python', '70'],
+#         'Mongo DB' : ['fa-database', '60'],
+#         'MySQL' : ['fa-database', '60'],
+#         'NodeJS' : ['fa-node-js', '50']
+#     },
+#     'languages' : {'French' : 'Native', 'English' : 'Professional', 'Spanish' : 'Professional', 'Italian' : 'Limited Working Proficiency'},
+#     'interests' : ['Dance', 'Travel', 'Languages']
+# }
 person = {
-    'first_name': 'Nohossat',
-    'last_name' : 'TRAORE',
-    'address' : '9 rue Léon Giraud · PARIS · FRANCE',
-    'job': 'Web developer',
-    'tel': '0678282923',
-    'email': 'nohossat.tra@yahoo.com',
-    'description' : 'Suite à une expérience internationale en développement web et dans le domaine des arts, l’impact de l’intelligence artificielle dans nos vies me surprend de jour en jour. \n Aujourd’hui, je souhaite changer de cap et comprendre les secrets que recèlent nos données. J’aimerais mettre à profit ces découvertes au service des entreprises/associations à dimension sociale.',
-    'social_media' : [
-        {
-            'link': 'https://www.facebook.com/nono',
-            'icon' : 'fa-facebook-f'
-        },
-        {
-            'link': 'https://github.com/nono',
-            'icon' : 'fa-github'
-        },
-        {
-            'link': 'linkedin.com/in/nono',
-            'icon' : 'fa-linkedin-in'
-        },
-        {
-            'link': 'https://twitter.com/nono',
-            'icon' : 'fa-twitter'
-        }
-    ],
-    'img': 'img/img_nono.jpg',
+    'first_name': 'Lily',
+    'address' : 'Hubei Normal University',
+    # 'job': 'Student',
+    'tel': '131565487',
+    'email': 'lily4434@outlook.com',
+    'capsname':'李某的简历',
+    'description' : 'I spend most of my time on study,i have passed CET4/6 . and ihave acquired basic knowledge of my major during my schooltime. ',
+    'qq': '123',
+    'wechat': 'bdf',
+    'github': 'https://github.com/lily9957',
+
+	'languages' : ['HTNL','CSS (Stylus)', 'JavaScript & jQuery', 'Killer Taste'],
+	'education' : ['湖北师范大学','XXXhigh school',  'XXXmiddle school'],
+
     'experiences' : [
         {
-            'title' : 'Web Developer',
-            'company': 'AZULIK',
-            'description' : 'Project manager and lead developer for several AZULIK websites.',
-            'timeframe' : 'July 2018 - November 2019'
+            'NO' : 'Job #1',
+            'light': 'First Experience description',
+            'justified' : 'Plaid gentrify put a bird on it, pickled XOXO farm-to-table irony raw denim messenger bag leggings. Hoodie PBR&B photo booth, vegan chillwave meh paleo freegan ramps. Letterpress shabby chic fixie semiotics. Meditation sriracha banjo pour-over. Gochujang pickled hashtag mixtape cred chambray. Freegan microdosing VHS, 90s bicycle rights aesthetic hella PBR&B.',
+           
         },
         {
-            'title' : 'Freelance Web Developer',
-            'company': 'Independant',
-            'description' : 'Create Wordpress websites for small and medium companies. ',
-            'timeframe' : 'February 2017 - Present'
-        },
-        {
-            'title' : 'Sharepoint Intern',
-            'company': 'ALTEN',
-            'description' : 'Help to manage a 600 Sharepoint sites platform (audit, migration to Sharepoint newer versions)',
-            'timeframe' : 'October 2015 - October 2016'
+        	'NO' : ' Job #2',
+        	'light': 'First Experience description',
+        	'justified' : 'Beard before they sold out photo booth distillery health goth. Hammock franzen green juice meggings, ethical sriracha tattooed schlitz mixtape man bun stumptown swag whatever distillery blog. Affogato iPhone normcore, meggings actually direct trade lomo plaid franzen shoreditch. Photo booth pug paleo austin, pour-over banh mi scenester vice food truck slow-carb. Street art kogi normcore, vice everyday carry crucifix thundercats man bun raw denim echo park pork belly helvetica vinyl. ',
+           
         }
-    ],
-    'education' : [
-        {
-            'university': 'Paris Diderot',
-            'degree': 'Projets informatiques et Startégies d\'entreprise (PISE)',
-            'description' : 'Gestion de projets IT, Audit, Programmation',
-            'mention' : 'Bien',
-            'timeframe' : '2015 - 2016'
-        },
-        {
-            'university': 'Paris Dauphine',
-            'degree': 'Master en Management global',
-            'description' : 'Fonctions supports (Marketing, Finance, Ressources Humaines, Comptabilité)',
-            'mention' : 'Bien',
-            'timeframe' : '2015'
-        },
-        {
-            'university': 'Lycée Turgot - Paris Sorbonne',
-            'degree': 'CPGE Economie & Gestion',
-            'description' : 'Préparation au concours de l\'ENS Cachan, section Economie',
-            'mention' : 'N/A',
-            'timeframe' : '2010 - 2012'
-        }
-    ],
-    'programming_languages' : {
-        'HMTL' : ['fa-html5', '100'], 
-        'CSS' : ['fa-css3-alt', '100'], 
-        'SASS' : ['fa-sass', '90'], 
-        'JS' : ['fa-js-square', '90'],
-        'Wordpress' : ['fa-wordpress', '80'],
-        'Python': ['fa-python', '70'],
-        'Mongo DB' : ['fa-database', '60'],
-        'MySQL' : ['fa-database', '60'],
-        'NodeJS' : ['fa-node-js', '50']
-    },
-    'languages' : {'French' : 'Native', 'English' : 'Professional', 'Spanish' : 'Professional', 'Italian' : 'Limited Working Proficiency'},
-    'interests' : ['Dance', 'Travel', 'Languages']
+    ]
+
 }
 
 @app.route('/')
