@@ -10,90 +10,6 @@ import csv, re, operator
 
 app = Flask(__name__)
 
-# person = {
-#     'first_name': 'Nohossat',
-#     'last_name' : 'TRAORE',
-#     'address' : '9 rue Léon Giraud · PARIS · FRANCE',
-#     'job': 'Web developer',
-#     'tel': '0678282923',
-#     'email': 'nohossat.tra@yahoo.com',
-#     'description' : 'Suite à une expérience internationale en développement web et dans le domaine des arts, l’impact de l’intelligence artificielle dans nos vies me surprend de jour en jour. \n Aujourd’hui, je souhaite changer de cap et comprendre les secrets que recèlent nos données. J’aimerais mettre à profit ces découvertes au service des entreprises/associations à dimension sociale.',
-#     'social_media' : [
-#         {
-#             'link': 'https://www.facebook.com/nono',
-#             'icon' : 'fa-facebook-f'
-#         },
-#         {
-#             'link': 'https://github.com/nono',
-#             'icon' : 'fa-github'
-#         },
-#         {
-#             'link': 'linkedin.com/in/nono',
-#             'icon' : 'fa-linkedin-in'
-#         },
-#         {
-#             'link': 'https://twitter.com/nono',
-#             'icon' : 'fa-twitter'
-#         }
-#     ],
-#     'img': 'img/img_nono.jpg',
-#     'experiences' : [
-#         {
-#             'title' : 'Web Developer',
-#             'company': 'AZULIK',
-#             'description' : 'Project manager and lead developer for several AZULIK websites.',
-#             'timeframe' : 'July 2018 - November 2019'
-#         },
-#         {
-#             'title' : 'Freelance Web Developer',
-#             'company': 'Independant',
-#             'description' : 'Create Wordpress websites for small and medium companies. ',
-#             'timeframe' : 'February 2017 - Present'
-#         },
-#         {
-#             'title' : 'Sharepoint Intern',
-#             'company': 'ALTEN',
-#             'description' : 'Help to manage a 600 Sharepoint sites platform (audit, migration to Sharepoint newer versions)',
-#             'timeframe' : 'October 2015 - October 2016'
-#         }
-#     ],
-#     'education' : [
-#         {
-#             'university': 'Paris Diderot',
-#             'degree': 'Projets informatiques et Startégies d\'entreprise (PISE)',
-#             'description' : 'Gestion de projets IT, Audit, Programmation',
-#             'mention' : 'Bien',
-#             'timeframe' : '2015 - 2016'
-#         },
-#         {
-#             'university': 'Paris Dauphine',
-#             'degree': 'Master en Management global',
-#             'description' : 'Fonctions supports (Marketing, Finance, Ressources Humaines, Comptabilité)',
-#             'mention' : 'Bien',
-#             'timeframe' : '2015'
-#         },
-#         {
-#             'university': 'Lycée Turgot - Paris Sorbonne',
-#             'degree': 'CPGE Economie & Gestion',
-#             'description' : 'Préparation au concours de l\'ENS Cachan, section Economie',
-#             'mention' : 'N/A',
-#             'timeframe' : '2010 - 2012'
-#         }
-#     ],
-#     'programming_languages' : {
-#         'HMTL' : ['fa-html5', '100'], 
-#         'CSS' : ['fa-css3-alt', '100'], 
-#         'SASS' : ['fa-sass', '90'], 
-#         'JS' : ['fa-js-square', '90'],
-#         'Wordpress' : ['fa-wordpress', '80'],
-#         'Python': ['fa-python', '70'],
-#         'Mongo DB' : ['fa-database', '60'],
-#         'MySQL' : ['fa-database', '60'],
-#         'NodeJS' : ['fa-node-js', '50']
-#     },
-#     'languages' : {'French' : 'Native', 'English' : 'Professional', 'Spanish' : 'Professional', 'Italian' : 'Limited Working Proficiency'},
-#     'interests' : ['Dance', 'Travel', 'Languages']
-# }
 person = {
     'first_name': 'Lily',
     'address' : 'Hubei Normal University',
@@ -139,17 +55,79 @@ def cb():
    
 @app.route('/chart')
 def index():
-	return render_template('chartsajax.html',  graphJSON=gm())
+	return render_template('chartsajax.html',  graphJSON=gm(),graphJSON1=gm1(),graphJSON2=gm2(),graphJSON3=gm3(),graphJSON4=gm4(),graphJSON5=gm5(),graphJSON6=gm6(),graphJSON7=gm7(),graphJSON8=gm8(),graphJSON9=gm9(),graphJSON10=gm10(),graphJSON11=gm11())
 
-def gm(country='United Kingdom'):
-	df = pd.DataFrame(px.data.gapminder())
-
-	fig = px.line(df[df['country']==country], x="year", y="gdpPercap")
-
+#鸢尾属植物数据集sepal_width：花萼宽度，sepal_length花萼长度，petal length（花瓣长度），petal width（花瓣宽度）
+def gm(): 
+	df = pd.DataFrame(px.data.iris())
+	fig = px.scatter(df, x="sepal_width", y="sepal_length")
 	graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
 	return graphJSON
 
+def gm1(): 
+	df = pd.DataFrame(px.data.iris())
+	fig = px.scatter(df, x="sepal_width", y="sepal_length", color="species")
+	# print()
+	graphJSON1 = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+	return graphJSON1
 
+def gm2(): 
+	df = pd.DataFrame(px.data.iris())
+	fig = px.scatter(df, x="sepal_width", y="sepal_length", color="species", marginal_y="rug", marginal_x="histogram")
+	graphJSON2 = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+	return graphJSON2
+def gm3(): 
+	df = pd.DataFrame(px.data.iris())
+	fig = px.density_contour(df, x="sepal_width", y="sepal_length")
+	graphJSON3 = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+	return graphJSON3
+
+def gm4(): 
+	df = pd.DataFrame(px.data.iris())
+	fig = px.density_heatmap(df, x="sepal_width", y="sepal_length")
+	graphJSON4 = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+	return graphJSON4
+
+def gm5(): 
+	df = pd.DataFrame(px.data.iris())
+	fig = px.parallel_coordinates(df, color="species_id", labels={"species_id": "Species",
+                "sepal_width": "Sepal Width", "sepal_length": "Sepal Length",
+                "petal_width": "Petal Width", "petal_length": "Petal Length", },
+                color_continuous_scale=px.colors.diverging.Tealrose, color_continuous_midpoint=2)
+	graphJSON5 = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+	return graphJSON5
+#violin
+def gm6(): 
+	df = pd.DataFrame(px.data.iris())
+	fig = px.scatter_matrix(df, dimensions=["sepal_width", "sepal_length", "petal_width", "petal_length"], color="species")
+	graphJSON6 = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+	return graphJSON6
+
+def gm7(): 
+	df = pd.DataFrame(px.data.iris())
+	fig = px.violin(df, x="sepal_width", y="sepal_length")
+	graphJSON7 = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+	return graphJSON7
+def gm8(): 
+	df = pd.DataFrame(px.data.iris())
+	fig = px.box(df, x="sepal_width", y="sepal_length", color="species")
+	graphJSON8 = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+	return graphJSON8
+def gm9(): 
+	df = pd.DataFrame(px.data.iris())
+	fig = px.bar(df, x="sepal_width", y="sepal_length")
+	graphJSON9 = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+	return graphJSON9
+def gm10(): 
+	df = pd.DataFrame(px.data.iris())
+	fig = px.histogram(df, x="sepal_width", y="sepal_length")
+	graphJSON10 = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+	return graphJSON10
+def gm11(): 
+	df = pd.DataFrame(px.data.iris())
+	fig = px.area(df, x="sepal_width", y="sepal_length")
+	graphJSON11 = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+	return graphJSON11
 @app.route('/senti')
 def main():
 	text = ""

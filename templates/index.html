@@ -65,8 +65,10 @@
         <p class="long-margin">{{person.description}}</p>
 
 
+        <p class="rela-block caps greyed"><a href="{{url_for('index')}}" target="_blank">近期作品</a></p>
 
         <div class="rela-block caps greyed">Project</div>
+
         {% for experience in person.experiences %}
         <h3>{{ experience.NO }}</h3>
         <p class="light">{{ experience.light }}</p>
