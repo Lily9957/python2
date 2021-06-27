@@ -11,14 +11,15 @@ import csv, re, operator
 app = Flask(__name__)
 
 person = {
-    'first_name': 'Lily',
+    'first_name': '李红杰',
     'address' : 'Hubei Normal University',
     # 'job': 'Student',
-    'tel': '131565487',
+    'tel': '131565487899',
+	'hope': 'web前端实习生',
     'email': 'lily4434@outlook.com',
-    'capsname':'李某的简历',
-    'description' : 'I spend most of my time on study,i have passed CET4/6 . and ihave acquired basic knowledge of my major during my schooltime. ',
-    'qq': '123',
+    'capsname':'About Me',
+    'description' : 'I study in Hubei Normal University and skilled HTML、CSS、JavaScript 、JQuery and React. At school, I spend most of my time on study,i have passed CET4/6 . and ihave acquired basic knowledge of my major during my schooltime. ',
+    'qq': '12367867878699',
     'wechat': 'bdf',
     'github': 'https://github.com/lily9957',
 
