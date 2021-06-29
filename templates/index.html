@@ -2,7 +2,7 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>CodePen - Resume stuff</title>
+  <title>Personal resume</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
 <link rel="stylesheet" href="./static/css/style.css">
 
@@ -43,13 +43,13 @@
         {% for experience in person.experiences %}
 
         <div class="container">
-            <span class="about">{{ experience.light }}</span>
+            <span class="about">{{ experience.light }} &nbsp;&nbsp;&nbsp;<a href="{{url_for('index')}}" target="_blank">Click here to show</a></span>
             <span class="onderline"></span>
             <p class="des">{{ experience.justified }} </p>
         </div>
         {% endfor %}
 
-        <p class="rela-block caps greyed"><a href="{{url_for('index')}}" target="_blank">近期作品</a></p>
+        <p class="rela-block caps greyed"></p>
     </div>
 </div>
 <!-- partial -->
